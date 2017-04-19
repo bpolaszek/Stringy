@@ -15,7 +15,7 @@ Add the following lines into your `composer.json`:
   "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/bpolaszek/Stringy"
+            "url": "https://github.com/bpolaszek/Stringy.git"
         }
     ],
 ```

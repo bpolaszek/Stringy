@@ -74,6 +74,34 @@ class Stringy implements Countable, IteratorAggregate, ArrayAccess
     }
 
     /**
+     * @param array $stringies
+     * @param string $glue
+     * @return self
+     * @throws \InvalidArgumentException if this is an empty array
+     */
+    public static function join(array $stringies, $glue = '')
+    {
+        if (0 === count($stringies)) {
+            throw new \InvalidArgumentException("Passed value should be an array of Stringy");
+        }
+
+        foreach ($stringies AS $stringy) {
+            if (!$stringy instanceof static) {
+                throw new \InvalidArgumentException("Passed value should be an array of Stringy");
+            }
+        }
+
+        $first = clone array_shift($stringies);
+        array_walk($stringies, function (self $next) use (&$first, $glue) {
+            if (0 !== \mb_strlen($glue)) {
+                $first = $first->append($glue);
+            }
+            $first = $first->append((string) $next);
+        });
+        return $first;
+    }
+
+    /**
      * Returns the value in $str.
      *
      * @return string The current value of the $str property

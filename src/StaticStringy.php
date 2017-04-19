@@ -148,7 +148,7 @@ class StaticStringy
 
         $result = call_user_func_array([$stringy, $name], $args);
 
-        $cast = function($val) {
+        $cast = function ($val) {
             if (is_object($val) && $val instanceof Stringy) {
                 return (string) $val;
             } else {

@@ -1704,7 +1704,7 @@ class Stringy implements Countable, IteratorAggregate, ArrayAccess
      * If no match is found returns false.
      *
      * @param string $separator
-     * @return string|bool
+     * @return self|bool
      */
     public function substringAfterFirst($separator)
     {
@@ -1718,7 +1718,7 @@ class Stringy implements Countable, IteratorAggregate, ArrayAccess
      * If no match is found returns false.
      *
      * @param string $separator
-     * @return string|bool
+     * @return self|bool
      */
     public function substringAfterLast($separator)
     {
@@ -1732,7 +1732,7 @@ class Stringy implements Countable, IteratorAggregate, ArrayAccess
      * If no match is found returns false.
      *
      * @param string $separator
-     * @return string|bool
+     * @return self|bool
      */
     public function substringBeforeFirst($separator)
     {
@@ -1746,7 +1746,7 @@ class Stringy implements Countable, IteratorAggregate, ArrayAccess
      * If no match is found returns false.
      *
      * @param string $separator
-     * @return string|bool
+     * @return self|bool
      */
     public function substringBeforeLast($separator)
     {
@@ -1758,7 +1758,7 @@ class Stringy implements Countable, IteratorAggregate, ArrayAccess
     /**
      * Extracts a string from between two substrings present on the current string
      * @param  string $start
-     * @param  staing $end
+     * @param  string $end
      * @return string
      */
     public function substringBetween($start, $end)
@@ -1767,7 +1767,7 @@ class Stringy implements Countable, IteratorAggregate, ArrayAccess
         $ini = mb_stripos($this->str, $start, 0, $this->encoding);
 
         if ($ini == 0)
-            return "";
+            return static::create('', $this->encoding);
 
         $ini += mb_strlen($start, $this->encoding);
         $len = mb_stripos($this->str, $end, $ini, $this->encoding) - $ini;

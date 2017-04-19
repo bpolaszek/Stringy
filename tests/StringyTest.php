@@ -2,7 +2,7 @@
 
 use Stringy\Stringy as S;
 
-class StringyTestCase extends PHPUnit_Framework_TestCase
+class StringyTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Asserts that a variable is of a Stringy instance.

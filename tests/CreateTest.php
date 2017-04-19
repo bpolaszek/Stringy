@@ -2,7 +2,7 @@
 
 use function Stringy\create as s;
 
-class CreateTestCase extends PHPUnit_Framework_TestCase
+class CreateTest extends \PHPUnit\Framework\TestCase
 {
     public function testCreate()
     {

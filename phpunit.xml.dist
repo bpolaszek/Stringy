@@ -8,6 +8,7 @@
         <testsuite name="Stringy">
             <file>tests/StringyTest.php</file>
             <file>tests/StaticStringyTest.php</file>
+            <file>tests/SubstringTest.php</file>
             <file phpVersion="5.6.0">tests/CreateTest.php</file>
         </testsuite>
     </testsuites>

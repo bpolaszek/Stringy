@@ -1797,7 +1797,7 @@ class Stringy implements Countable, IteratorAggregate, ArrayAccess
      * Extracts a string from between two substrings present on the current string
      * @param  string $start
      * @param  string $end
-     * @return string
+     * @return self
      */
     public function substringBetween($start, $end)
     {

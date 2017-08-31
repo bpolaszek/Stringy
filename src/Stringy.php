@@ -1211,14 +1211,16 @@ class Stringy implements Countable, IteratorAggregate, ArrayAccess
      * characters with their closest ASCII equivalents, removing remaining
      * non-ASCII and non-alphanumeric characters, and replacing whitespace with
      * $replacement. The replacement defaults to a single dash, and the string
-     * is also converted to lowercase.
+     * is also converted to lowercase. The language of the source string can
+     * also be supplied for language-specific transliteration.
      *
      * @param  string $replacement The string used to replace whitespace
+     * @param  string $language    Language of the source string
      * @return static Object whose $str has been converted to an URL slug
      */
-    public function slugify($replacement = '-')
+    public function slugify($replacement = '-', $language = 'en')
     {
-        $stringy = $this->toAscii();
+        $stringy = $this->toAscii($language);
 
         $stringy->str = str_replace('@', $replacement, $stringy);
         $quotedReplacement = preg_quote($replacement);
@@ -1852,7 +1854,7 @@ class Stringy implements Countable, IteratorAggregate, ArrayAccess
                         'ᾀ', 'ᾁ', 'ᾂ', 'ᾃ', 'ᾄ', 'ᾅ', 'ᾆ', 'ᾇ', 'ὰ', 'ά',
                         'ᾰ', 'ᾱ', 'ᾲ', 'ᾳ', 'ᾴ', 'ᾶ', 'ᾷ', 'а', 'أ', 'အ',
                         'ာ', 'ါ', 'ǻ', 'ǎ', 'ª', 'ა', 'अ', 'ا', 'ａ', 'ä'],
-            'b'     => ['б', 'β', 'Ъ', 'Ь', 'ب', 'ဗ', 'ბ', 'ｂ'],
+            'b'     => ['б', 'β', 'ب', 'ဗ', 'ბ', 'ｂ'],
             'c'     => ['ç', 'ć', 'č', 'ĉ', 'ċ', 'ｃ'],
             'd'     => ['ď', 'ð', 'đ', 'ƌ', 'ȡ', 'ɖ', 'ɗ', 'ᵭ', 'ᶁ', 'ᶑ',
                         'д', 'δ', 'د', 'ض', 'ဍ', 'ဒ', 'დ', 'ｄ'],
@@ -2022,6 +2024,10 @@ class Stringy implements Countable, IteratorAggregate, ArrayAccess
             'de' => [
                 ['ä',  'ö',  'ü',  'Ä',  'Ö',  'Ü' ],
                 ['ae', 'oe', 'ue', 'AE', 'OE', 'UE'],
+            ],
+            'bg' => [
+                ['х', 'Х', 'щ', 'Щ', 'ъ', 'Ъ', 'ь', 'Ь'],
+                ['h', 'H', 'sht', 'SHT', 'a', 'А', 'y', 'Y']
             ]
         ];
 
